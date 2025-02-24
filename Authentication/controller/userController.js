@@ -1,9 +1,9 @@
-const { createUser, loginUser } = require("../AuthService/authService");
+const { createUser, loginUser } = require("../service/userService");
 
 const handleCreateUser = async (req, res) => {
   let response = await createUser(req.body);
   if (response.success) {
-    res.status(200).send("User Created Successfully");
+    res.status(200).send(response);
   } else {
     res.status(409).send("Failed to create user");
   }
@@ -16,5 +16,7 @@ const handleUserLogin = async (req, res) => {
     res.status(401).send(response);
   }
 };
-
-module.exports = { handleCreateUser, handleUserLogin };
+const handleUpdateUserData = async (req, res) => {
+  res.status(200).send("successfully updated data");
+};
+module.exports = { handleCreateUser, handleUserLogin, handleUpdateUserData };
