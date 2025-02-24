@@ -1,5 +1,6 @@
 const Joi = require("joi");
 const { STATUS_CODE_MESSAGE } = require("../Public/StatusCode/StatusCodeError");
+const jwt = require("jsonwebtoken");
 
 const CreateUSerValidationSchema = Joi.object({
   email: Joi.string().email().required(),
@@ -44,7 +45,18 @@ const loginValidation = (req, res, next) => {
   }
 };
 
+const validateUser = (req, res, next) => {
+  console.log("req", req.body);
+  const { token } = req.body;
+  try {
+    const isValidUser = jwt.verify(token, process.env.AUTH_PRIVATE_KEY);
+    next();
+  } catch (error) {
+    
+  }
+}
 module.exports = {
   signUpValidation,
   loginValidation,
+  validateUser,
 };

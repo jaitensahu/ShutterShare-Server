@@ -1,13 +1,16 @@
 const STATUS_CODE_MESSAGE = {
   409: {
+    statusCode: 409,
     success: false,
     message: "Data Already Exits",
   },
   200: {
+    statusCode: 200,
     success: true,
     message: "Success",
   },
   400: {
+    statusCode: 400,
     success: false,
     message: "Bad request",
   },
@@ -23,6 +26,10 @@ const STATUS_CODE_MESSAGE = {
     success: false,
     message: "Incorrect Password",
   },
+  USER_CREATED_SUCCESFULLY: {
+    success: true,
+    message: "user created succesfully"
+  }
 };
 
 const STATUS_CODE = {
